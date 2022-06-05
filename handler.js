@@ -45,7 +45,7 @@ app.get("/recipes/:recipeId", async function (req, res) {
     const { Item } = await dynamoDbClient.get(params).promise();
     if (Item) {
       const { recipeId, name, ingredients, recipe } = Item;
-      res.json({ recipeId, name, ingredients, recipe });
+      res.json({ recipeId, name, ingredients, recipe, timestamp });
     } else {
       res
         .status(404)
@@ -82,7 +82,7 @@ app.post("/recipes", async function (req, res) {
 
   try {
     await dynamoDbClient.put(params).promise();
-    res.json({ recipeId, name, ingredients, recipe });
+    res.json({ recipeId, name, ingredients, recipe, timestamp });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Could not create recipe" });
