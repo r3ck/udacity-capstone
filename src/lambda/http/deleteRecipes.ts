@@ -7,7 +7,8 @@ import { deleteRecipe } from '../../businessLogic/recipes'
 export const handler = middy(
   async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     const recipeId = event.pathParameters.recipeId
-    const deleteRecipeResponse = await deleteRecipe(recipeId);
+    const type = event.pathParameters.type
+    const deleteRecipeResponse = await deleteRecipe(recipeId, type);
     return {
       statusCode: 200,
       body: JSON.stringify({

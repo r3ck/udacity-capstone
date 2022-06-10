@@ -3,5 +3,6 @@ export interface RecipeItem {
   name: string
   ingredients: string
   preparationMode: string
+  type: string
   createdAt: string
 }

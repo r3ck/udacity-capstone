@@ -8,8 +8,9 @@ import { UpdateRecipeRequest } from '../../requests/UpdateRecipeRequest'
 export const handler = middy(
   async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     const recipeId = event.pathParameters.recipeId
+    const type = event.pathParameters.type
     const updatedRecipe: UpdateRecipeRequest = JSON.parse(event.body)
-    const updateRecipeResponse = await updateRecipe(recipeId, updatedRecipe );
+    const updateRecipeResponse = await updateRecipe(recipeId, type, updatedRecipe);
     return {
       statusCode: 200,
       body: JSON.stringify({

@@ -11,12 +11,16 @@
     },
     "preparationMode": {
       "type": "string"
-    }
+    },
+    "type": {
+      "type": "string"
+    }  
   },
   "required": [
     "name",
     "ingredients",
-    "preparationMode"
+    "preparationMode",
+    "type"
   ],
   "additionalProperties": false
 }

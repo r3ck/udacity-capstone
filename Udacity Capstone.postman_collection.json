@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "c3b5f75f-8fe6-4d99-8362-170ee09d5d6b",
+		"name": "Udacity Capstone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10168489"
+	},
+	"item": [
+		{
+			"name": "Recipes",
+			"item": [
+				{
+					"name": "Create recipe",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Pizza\",\n  \"ingredients\": \"220 g self-rising flour, 245 g greek yogurt\",\n  \"preparationMode\": \"Mix the ingredients and put the topping. Oven at 400 F for 15 minutes\",\n  \"type\": \"healthy\"\n}"
+						},
+						"url": {
+							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/recipes",
+							"protocol": "https",
+							"host": [
+								"{{apiId}}",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"recipes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a recipe",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/recipes/{{type}}/{{recipeId}}",
+							"protocol": "https",
+							"host": [
+								"{{apiId}}",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"recipes",
+								"{{type}}",
+								"{{recipeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update recipe",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Greek Yogurt Pizza\",\n  \"ingredients\": \"220 g self-rising flour, 245 g greek yogurt\",\n  \"preparationMode\": \"Mix the ingredients and put the topping. Oven at 400 F for 20 minutes\"\n}"
+						},
+						"url": {
+							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/recipes/{{type}}/{{recipeId}}",
+							"protocol": "https",
+							"host": [
+								"{{apiId}}",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"recipes",
+								"{{type}}",
+								"{{recipeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete recipe",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{authToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{apiId}}.execute-api.us-east-1.amazonaws.com/dev/recipes/{{type}}/{{recipeId}}",
+							"protocol": "https",
+							"host": [
+								"{{apiId}}",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"recipes",
+								"{{type}}",
+								"{{recipeId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiId",
+			"value": "zn9mk1iatg",
+			"type": "string"
+		},
+		{
+			"key": "type",
+			"value": "healthy",
+			"type": "string"
+		},
+		{
+			"key": "recipeId",
+			"value": "2344b124-a64c-4676-a96a-d101bf4ca755",
+			"type": "string"
+		}
+	]
+}

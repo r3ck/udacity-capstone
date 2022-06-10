@@ -23,7 +23,7 @@ provider:
   # Use these variables in the functions and resouorces section below. For example,
   # ${self:provider.environment.ATTACHMENT_S3_BUCKET}
   environment:
-    RECIPES_TABLE: Recipes-API-${self:provider.stage}-v1
+    RECIPES_TABLE: Recipes-API-${self:provider.stage}-v3
 
   logs:
     # Enable API Gateway logs
@@ -44,7 +44,7 @@ functions:
     events:
       - http:
           method: get
-          path: recipes/{recipeId}
+          path: recipes/{type}/{recipeId}
           cors: true
 
     iamRoleStatements:
@@ -76,7 +76,7 @@ functions:
     events:
       - http:
           method: patch
-          path: recipes/{recipeId}
+          path: recipes/{type}/{recipeId}
           cors: true
 
           request:
@@ -94,7 +94,7 @@ functions:
     events:
       - http:
           method: delete
-          path: recipes/{recipeId}
+          path: recipes/{type}/{recipeId}
           cors: true
 
     iamRoleStatements:
@@ -123,7 +123,11 @@ resources:
         AttributeDefinitions:
           - AttributeName: recipeId
             AttributeType: S
+          - AttributeName: type
+            AttributeType: S
         KeySchema:
           - AttributeName: recipeId
             KeyType: HASH
+          - AttributeName: type
+            KeyType: RANGE
         BillingMode: PAY_PER_REQUEST
